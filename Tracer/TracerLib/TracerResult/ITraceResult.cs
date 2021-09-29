@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TracerLib
+namespace TracerLibrary.TracerResult
 {
-    public class TraceResult
+    public interface ITraceResult
     {
+        public ITraceResult GetValue();
     }
 }

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TracerLib\TracerLib.csproj" />
+    <ProjectReference Include="..\TracerLib\TracerLibrary.csproj" />
   </ItemGroup>
 
 </Project>

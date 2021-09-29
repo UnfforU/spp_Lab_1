@@ -1,5 +1,6 @@
 ﻿using System;
-using TracerLib;
+using TracerLibrary.Tracer;
+using TracerLibrary.TracerResult;
 
 namespace TracerApp
 {
@@ -7,8 +8,7 @@ namespace TracerApp
     {
         static void Main(string[] args)
         {
-            ITracer tracer = new Tracer();
-
+            ITracer tracer = Tracer.getInstance();
 
 
             Console.WriteLine("Hello World!");

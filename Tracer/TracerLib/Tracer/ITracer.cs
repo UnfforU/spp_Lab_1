@@ -1,14 +1,15 @@
 ﻿using System;
+using TracerLibrary.TracerResult;
 
-namespace TracerLib
+namespace TracerLibrary.Tracer
 {
     public interface ITracer
     {
         //Вызывается в начале замеряемого метода
-        void StartTrace();
+        public void StartTrace();
         //Вызывается в конце замеряемого метода
-        void StopTrace();
+        public void StopTrace();
         //Получить результаты измерений
-        TraceResult GetTraceResult();
+        public TraceResult GetTraceResult();
     }
 }
