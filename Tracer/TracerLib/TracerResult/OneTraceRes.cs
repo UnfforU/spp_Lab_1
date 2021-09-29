@@ -19,6 +19,15 @@ namespace TracerLibrary.TracerResult
         public string MethodName => _methodName;
         public int MilliSeconds => _milliSeconds;
 
+       /* public List<OneTraceRes> listOfMethods
+        {
+            get
+            {
+                return stack?.ToList<OneTraceRes>();
+            }
+        }
+       */
+
         public OneTraceRes(string className, string methodName, int ms, int countId)
         {
             _className = className;
@@ -27,6 +36,7 @@ namespace TracerLibrary.TracerResult
             CountId = countId;
         }
 
+        //Для вложенных функций(по индексам вызова)
         public void PushNewTraceRes(OneTraceRes res)
         {
             if (CountId == res.CountId - 1) { stack.Push(res); } else { stack.Peek().PushNewTraceRes(res); }

@@ -62,7 +62,7 @@ namespace TracerLibrary.Tracer
                     traceResult = new TraceResult();
                 }
 
-                traceResult.Push(ClassName, method, ms, countCall, ThreadId);
+                traceResult.AddResult(ClassName, method, ms, countCall, ThreadId);
             }
 
         }
