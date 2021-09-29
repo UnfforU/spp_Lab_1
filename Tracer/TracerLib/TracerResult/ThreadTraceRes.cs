@@ -3,23 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+
 
 namespace TracerLibrary.TracerResult
 {
+    [XmlType("thread")]
     public class ThreadTraceRes 
     {
-        private Stack<OneTraceRes> threadTraceStack;
+        private Stack<OneTraceRes> threadTraceStack = null;
         private int time;
         private int threadId;
 
+        [XmlAttribute("time")]
         public int Time { get { return time; } set { time = value; } }
+
+        [XmlAttribute("ThreadId")]
         public int ThreadId { get { return threadId; } set { threadId = value; } }
 
-        public List<OneTraceRes> listOfMethods
+        [XmlElement("method")]
+        public List<OneTraceRes> ListOfMethods
         {
             get
             {
-                return threadTraceStack.ToList<OneTraceRes>();
+                return ThreadTraceStack.ToList<OneTraceRes>();
             }
         }
 
@@ -32,6 +39,7 @@ namespace TracerLibrary.TracerResult
             set
             {
                 threadTraceStack = value;
+
                 foreach(var oneTraceResult in threadTraceStack)
                 {
                     if(oneTraceResult.CountId == 0) { 
@@ -48,7 +56,7 @@ namespace TracerLibrary.TracerResult
             result.time = time;
             result.threadTraceStack = new Stack<OneTraceRes>();
 
-            foreach(OneTraceRes traceRes in this.threadTraceStack.Reverse())
+            foreach(OneTraceRes traceRes in threadTraceStack.Reverse())
             {
                 result.threadTraceStack.Push(traceRes.GetValue());
             }

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+
 
 namespace TracerLibrary.TracerResult
 {
+    [XmlType("method")]
     public class OneTraceRes
     {
         private Stack<OneTraceRes> stack = new Stack<OneTraceRes>();
@@ -13,20 +16,22 @@ namespace TracerLibrary.TracerResult
         private string _methodName;
         private int _milliSeconds;
 
+        [XmlIgnore]
         public int CountId;
 
-        public string ClassName => _className;
-        public string MethodName => _methodName;
-        public int MilliSeconds => _milliSeconds;
-
-       /* public List<OneTraceRes> listOfMethods
+        [XmlAttribute("class")]
+        public string ClassName { get { return _className; } set { _className = value; } }
+        [XmlAttribute("methodName")]
+        public string MethodName { get { return _methodName; } set { _methodName = value; } }
+        [XmlAttribute("time")]
+        public int MilliSeconds { get { return _milliSeconds; } set { _milliSeconds = value; } } 
+            
+        
+        public OneTraceRes()
         {
-            get
-            {
-                return stack?.ToList<OneTraceRes>();
-            }
+
+
         }
-       */
 
         public OneTraceRes(string className, string methodName, int ms, int countId)
         {
@@ -34,6 +39,15 @@ namespace TracerLibrary.TracerResult
             _methodName = methodName;
             _milliSeconds = ms;
             CountId = countId;
+        }
+        
+        [XmlElement("method")]
+        public List<OneTraceRes> listOfMethods
+        {
+            get
+            {
+                return stack?.ToList();
+            }
         }
 
         //Для вложенных функций(по индексам вызова)

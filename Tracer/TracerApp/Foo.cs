@@ -22,7 +22,7 @@ namespace TracerApp
         public void MyMethod()
         {
             _tracer.StartTrace();
-            Thread.Sleep(200);
+            Thread.Sleep(1000);
             _bar.InnerMethod();
             _tracer.StopTrace();
         }

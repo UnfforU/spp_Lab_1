@@ -10,7 +10,7 @@ namespace TracerLibrary.TracerResult
     {
         private Dictionary<int, ThreadTraceRes> traceResults = new Dictionary<int, ThreadTraceRes>();
 
-        public List<ThreadTraceRes> AllTraceResult
+        public List<ThreadTraceRes> threads
         {
             get
             {

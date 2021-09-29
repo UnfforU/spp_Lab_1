@@ -20,7 +20,7 @@ namespace TracerApp
         public void InnerMethod()
         {
             _tracer.StartTrace();
-            Thread.Sleep(100);
+            Thread.Sleep(2000);
             _tracer.StopTrace();
         }
     }
