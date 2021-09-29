@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.IO;
 using TracerLibrary.Tracer;
 using TracerLibrary.TracerResult;
 using TracerLibrary.Serializers;
@@ -29,12 +30,19 @@ namespace TracerApp
 
             TraceResult res = tracer.GetTraceResult();
 
-            ISerializer XMLSerialize = new XMLSerializer();
-            string XMLres = XMLSerialize.Serialize(res);
+            FileWriter writer = new FileWriter();
 
-            Console.WriteLine(XMLres);
+            ISerializer Serializer = new XMLSerializer();
+            string output = Serializer.Serialize(res);
+            writer.WriteStream(typeof(FileStream), "res.xml", output);
+            writer.WriteStream(typeof(Console), null, output);
+            //Console.WriteLine(output);
+
+            Serializer = new JSONSerializer();
+            output = Serializer.Serialize(res);
+            writer.WriteStream(typeof(FileStream), "res.json", output);
+            writer.WriteStream(typeof(Console), null, output);
         }
-    
 
         static void ProgramMethod()
         {
