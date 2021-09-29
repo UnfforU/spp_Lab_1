@@ -12,7 +12,7 @@ namespace TracerApp
     {
         private ITracer _tracer;
 
-        internal Bar(ITracer tracer)
+        public Bar(ITracer tracer)
         {
             _tracer = tracer;
         }

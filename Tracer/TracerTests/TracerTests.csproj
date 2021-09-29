@@ -13,4 +13,9 @@
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TracerApp\TracerApp.csproj" />
+    <ProjectReference Include="..\TracerLib\TracerLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

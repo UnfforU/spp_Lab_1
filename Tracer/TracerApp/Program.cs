@@ -30,18 +30,19 @@ namespace TracerApp
 
             TraceResult res = tracer.GetTraceResult();
 
-            FileWriter writer = new FileWriter();
-
+            StrWriter writer = new StrWriter();
+            
             ISerializer Serializer = new XMLSerializer();
             string output = Serializer.Serialize(res);
             writer.WriteStream(typeof(FileStream), "res.xml", output);
-            writer.WriteStream(typeof(Console), null, output);
+            writer.WriteStream(typeof(Console), output);
             //Console.WriteLine(output);
 
             Serializer = new JSONSerializer();
             output = Serializer.Serialize(res);
             writer.WriteStream(typeof(FileStream), "res.json", output);
-            writer.WriteStream(typeof(Console), null, output);
+            writer.WriteStream(typeof(Console), output);
+            
         }
 
         static void ProgramMethod()
